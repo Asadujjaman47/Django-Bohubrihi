@@ -5,8 +5,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("<h1>I am from first app</h1>")
-
-
-def contact(request):
-    return HttpResponse('<h1>I am conatact page</h1>')
+    diction = {'text_1': 'I am a text sent from views.py'}
+    return render(request, 'first_app/index.html', context=diction)
