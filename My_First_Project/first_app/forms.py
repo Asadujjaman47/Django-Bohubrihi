@@ -1,23 +1,18 @@
-from msilib.schema import RadioButton
-from xmlrpc.client import boolean
+from dataclasses import field, fields
 from django import forms
+# from first_app.models import Album, Musician
+from first_app import models
 
 
-class user_form(forms.Form):
-    # boolean_field = forms.BooleanField(required=False)
-    # field = forms.CharField(max_length=15, min_length=5)
-    # field = forms.ChoiceField(choices=(('', '--SELECT OPTION--'), ('1', 'Firest'), ('2', 'Second'), ('3', 'Third')))
+class MusicianForm(forms.ModelForm):
+    class Meta:
+        model = models.Musician
 
-    # tuple 1st value: database value,
-    #       2nd value: webpage show value
-    # choices = (('A', 'A'), ('B', 'B'), ('C', 'C'))
-    # field = forms.ChoiceField(choices=choices, widget=forms.RadioSelect)
+        # model all field include korbe
+        fields = "__all__"
 
-    # choices = (('', '--SELECT OPTION--'), ('1', 'Firest'),
-    #            ('2', 'Second'), ('3', 'Third'))
-    # field = forms.MultipleChoiceField(
-    #     choices=choices, required=False)
+        # if exclude: kono field baad dite chaile
+        # exclude = ['first_name']
 
-    choices = (('A', 'A'), ('B', 'B'), ('C', 'C'))
-    field = forms.MultipleChoiceField(
-        choices=choices)
+        # new field add korte chaile
+        # fields = ('first_name', 'last_name',)

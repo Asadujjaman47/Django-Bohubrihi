@@ -17,17 +17,16 @@ def index(request):
 
 
 def form(request):
-    new_form = forms.user_form()
-    diction = {
-        'test_form': new_form,
-        'heading_1': "This form is created using django library"
-    }
+    new_form = forms.MusicianForm()
 
+    # if form is submit:
     if request.method == 'POST':
-        new_form = forms.user_form(request.POST)
+        new_form = forms.MusicianForm(request.POST)
 
-        if new_form.is_valid():
-            diction.update({'field': new_form.cleaned_data['field']})
-            diction.update({'form_submited': 'Yes'})
+    # is form valid
+    if new_form.is_valid():
+        new_form.save(commit=True)  # form's submit information set in model
+        return index(request)
 
+    diction = {'test_form': new_form, 'heading_1': 'Add New Musician'}
     return render(request, 'first_app/form.html', context=diction)
