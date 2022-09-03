@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from first_app.models import Musician, Album
+from first_app import forms
 
 # Create your views here.
+
+
 def index(request):
     # SELECT * FROM Musician ORDER BY first_name
     musician_list = Musician.objects.order_by('first_name')
@@ -14,5 +17,9 @@ def index(request):
 
 
 def form(request):
-    diction = {}
+    new_form = forms.user_form()
+    diction = {
+        'test_form': new_form,
+        'heading_1': "THis form is created uing django library"
+    }
     return render(request, 'first_app/form.html', context=diction)
