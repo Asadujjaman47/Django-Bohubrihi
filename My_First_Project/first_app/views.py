@@ -3,8 +3,6 @@ from django.http import HttpResponse
 from first_app.models import Musician, Album
 
 # Create your views here.
-
-
 def index(request):
     # SELECT * FROM Musician ORDER BY first_name
     musician_list = Musician.objects.order_by('first_name')
@@ -13,3 +11,8 @@ def index(request):
         'musician': musician_list
     }
     return render(request, 'first_app/index.html', context=diction)
+
+
+def form(request):
+    diction = {}
+    return render(request, 'first_app/form.html', context=diction)
