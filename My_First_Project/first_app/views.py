@@ -20,6 +20,14 @@ def form(request):
     new_form = forms.user_form()
     diction = {
         'test_form': new_form,
-        'heading_1': "THis form is created uing django library"
+        'heading_1': "This form is created using django library"
     }
+
+    if request.method == 'POST':
+        new_form = forms.user_form(request.POST)
+
+        if new_form.is_valid():
+            diction.update({'field': new_form.cleaned_data['field']})
+            diction.update({'form_submited': 'Yes'})
+
     return render(request, 'first_app/form.html', context=diction)

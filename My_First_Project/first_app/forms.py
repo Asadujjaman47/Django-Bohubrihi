@@ -1,23 +1,23 @@
+from msilib.schema import RadioButton
+from xmlrpc.client import boolean
 from django import forms
 
 
 class user_form(forms.Form):
+    # boolean_field = forms.BooleanField(required=False)
+    # field = forms.CharField(max_length=15, min_length=5)
+    # field = forms.ChoiceField(choices=(('', '--SELECT OPTION--'), ('1', 'Firest'), ('2', 'Second'), ('3', 'Third')))
 
-    # <label for = "user_name" > Full Name: < /label >
-    # <input type = "text" name = "user_name" placeholder="Enter your full name"  value = "" style="width:300px" required >
-    # set style:
-    user_name = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={
-            'placeholdder': 'Enter your full name',
-            'style': 'width: 300px'
-        }))
+    # tuple 1st value: database value,
+    #       2nd value: webpage show value
+    # choices = (('A', 'A'), ('B', 'B'), ('C', 'C'))
+    # field = forms.ChoiceField(choices=choices, widget=forms.RadioSelect)
 
-    user_dob = forms.DateField(label="Date of Birth", widget=forms.TextInput(
-        attrs={
-            'type': 'date'
-        }
-    ))
+    # choices = (('', '--SELECT OPTION--'), ('1', 'Firest'),
+    #            ('2', 'Second'), ('3', 'Third'))
+    # field = forms.MultipleChoiceField(
+    #     choices=choices, required=False)
 
-    # <label for = "user_email" > User Email: < /label >
-    #  <input type = "email" name = "user_email" value = "" required >
-    user_email = forms.EmailField(label="User Email")
+    choices = (('A', 'A'), ('B', 'B'), ('C', 'C'))
+    field = forms.MultipleChoiceField(
+        choices=choices)
