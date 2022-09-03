@@ -5,18 +5,39 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href= "{% static "css/style.css" %}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Homepage of First App</title>
+        <title>Musician List</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
     <body>
-        
-        <h1>This is the homepage of First App</h1>
-        <h2>I am being from views.py of First App</h2>
-        {{text_1}}
-        <br>
-        <img src="{% static "images/images.jpg" %}">
+{% comment %} 
 
+        {{ }}   --> statement / variable
+
+        {%  %}  --> conditon: if/else, loop: for
+
+{% endcomment %}
+        
+        <h1> {{ text_1 }} </h1>
+        
+        <table border="1">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Instrument</th>
+            </tr>
+
+            {% for row in musician %}
+
+            <tr>
+                <td>{{row.first_name}}</td>
+                <td>{{row.last_name}}</td>
+                <td>{{row.instrument}}</td>
+            </tr>
+            
+            {% endfor %}
+        </table>
+        
     </body>
 </html>
