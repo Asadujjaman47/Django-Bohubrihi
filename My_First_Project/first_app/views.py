@@ -1,3 +1,4 @@
+from turtle import update
 from django.shortcuts import render
 from first_app.models import Musician, Album
 from first_app import forms
@@ -87,4 +88,18 @@ def edit_album(request, album_id):
             diction.update({'success_text': 'Successfully Updated!'})
 
     diction.update({'edit_form': form})
+    diction.update({'album_id': album_id})
     return render(request, 'first_app/edit_album.html', context=diction)
+
+
+def delete_album(request, album_id):
+    album = Album.objects.get(pk=album_id).delete()
+
+    diction = {'delete_success': 'Album Deleted Successfylly!'}
+    return render(request, 'first_app/delete.html', context=diction)
+
+def delete_musician(request, artist_id):
+    artist = Musician.objects.get(pk=artist_id).delete()
+    diction = {'delete_success': 'Musician Deleted Successfylly!'}
+    
+    return render(request, 'first_app/delete.html', context=diction)
