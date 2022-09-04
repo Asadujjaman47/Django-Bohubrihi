@@ -1,0 +1,6 @@
+CRUD project:
+    here i will not use sql lite database,
+    I will ues here mySql database
+
+now connect django with mySQL database
+    > pip install mysqlclient
