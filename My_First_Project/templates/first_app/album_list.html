@@ -1,6 +1,25 @@
 {% extends 'first_app/base.html' %}
 {% block body_block %}
-<h3>List of Album</h3>
+
 <h4>Artist Name: {{ artist_info.first_name }} {{artist_info.last_name}}</h4>
 <h4>instrument: {{ artist_info.instrument }} </h4>
+
+<h3>Artist Rating: {{ artist_rating.num_stars__avg}} </h3>
+
+<h3>List of Album:</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Album Name</th>
+        <th>Release Rate</th>
+        <th>Rating</th>
+    </tr>
+    {% for album in album_list %}
+    <tr>
+        <td>{{ album.name }}</td>
+        <td>{{ album.release_date|date:"M d, Y" }}</td>
+        <td>{{ album.num_stars }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}
