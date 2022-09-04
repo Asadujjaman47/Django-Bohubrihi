@@ -1,18 +1,7 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Form</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <h3>{{ heading_1 }}</h3>
-        <form action="" method="POST">
-            {{ test_form.as_p }}
-            {% csrf_token %} 
-            <input type="submit" name="submit" value="Submit">
-        </form>
-        <hr>
+{% extends "first_app/base.html" %}
+{% block body_block %}
 
-    </body>
-</html>
+<h1>I am Form Page</h1>
+
+{% endblock %}
