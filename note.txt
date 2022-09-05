@@ -4,3 +4,6 @@ CRUD project:
 
 now connect django with mySQL database
     > pip install mysqlclient
+
+10. Class Based View:
+    here XAMPP run in background
