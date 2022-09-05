@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from multiprocessing import context
-from django.views.generic import View, TemplateView, ListView, DetailView, CreateView
+from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from first_app import models
+from django.urls import reverse_lazy
 
 # Create your views here.
 # functionbase views:
@@ -36,3 +37,17 @@ class AddMusician(CreateView):
     fields = ('first_name', 'last_name', 'instrument')
     model = models.Musician     # it will create form for us
     template_name = 'first_app/musician_form.html'
+
+
+class UpdateMusician(UpdateView):
+    # ja ja update korbo, ta ekane bolbo
+    fields = ('first_name', 'last_name', 'instrument')
+    model = models.Musician
+    template_name = 'first_app/musician_form.html'
+
+
+class DeleteMusician(DeleteView):
+    context_object_name = 'musician'
+    model = models.Musician
+    success_url = reverse_lazy("first_app:index")
+    template_name = 'first_app/delete_musician.html'
